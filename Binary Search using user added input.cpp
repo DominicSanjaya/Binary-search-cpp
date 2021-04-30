@@ -13,7 +13,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 using namespace std;
 typedef std::vector<int>::iterator iter;
 
-
 int main()
 {
 	cout << "type 1 to use sample data, type 2 to use your own data" << endl;
