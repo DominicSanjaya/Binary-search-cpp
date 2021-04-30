@@ -6,7 +6,7 @@ You may obtain a copy of the License at
 http://www.apache.org/licenses/LICENSE-2.0
 **/
 //I as an owner of this program do not own any copyright of the used dependency and your usage of dependency are restricted by it's respective lisence.
-//I as an owner of this program do not provide any dependency required to run this console application
+//I as an owner of this program do not provide any dependency required to run this console application. Please add the dependency yourself if it not yet included with your complier
 #include <vector>
 #include <iostream>
 #include<algorithm>
