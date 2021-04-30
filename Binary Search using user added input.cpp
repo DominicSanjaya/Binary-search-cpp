@@ -10,7 +10,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 #include <vector>
 #include <iostream>
 #include<algorithm>
-#include <array>
 using namespace std;
 typedef std::vector<int>::iterator iter;
 
