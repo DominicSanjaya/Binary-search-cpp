@@ -1,4 +1,11 @@
 /** INCLUDES **/
+/**   Copyright 2021 Dominic Sanjaya
+Licensed under the Apache License, Version 2.0 (the "License");
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+**/
+//I as an owner of this program do not own any copyright of the used dependency and your usage of dependency are restricted by it's respective lisence.
 #include <vector>
 #include <iostream>
 #include<algorithm>
