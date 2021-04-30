@@ -41,7 +41,7 @@ int main()
 		int sizeofuservector;
 		cin >> sizeofuservector;
 		if (sizeofuservector < 2) { cout << "Sorry the number for the vector size is too small."; }
-		else if (sizeofuservector<=20 && sizeofuservector>=2) {
+		else if (sizeofuservector<=100 && sizeofuservector>=2) {
 			cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
 			int amountofnumberinput = 0;
 			vector <int> uservector;
@@ -62,7 +62,7 @@ int main()
 			}
 			return 0;
 		}
-		else {cout << "Are you sure want to add large amount of data it will take large amount of time?"<<endl;
+		else {cout << "Are you sure want to add large amount of data it will take large amount of time to input the number by yourself?"<<endl;
 		int yesorno;
 		cout << "1 to continue, 2 to abort [1/2] "; cin >> yesorno;
 			if (yesorno == 1) {
