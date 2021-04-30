@@ -15,7 +15,7 @@ typedef std::vector<int>::iterator iter;
 
 
 int main()
-{	
+{
 	cout << "type 1 to use sample data, type 2 to use your own data" << endl;
 	int insertsample;
 	cin >> insertsample;
@@ -24,7 +24,7 @@ int main()
 		std::sort(vec.begin(), vec.end());
 		iter low = std::lower_bound(vec.begin(), vec.end(), 20);
 		iter high = std::upper_bound(vec.begin(), vec.end(), 20);
-		std::cout << "index of first element, greater than or equal to 20 is: " << (low - vec.begin()) << '\n';
+		std::cout << "index of first element, less than or equal to 20 is: " << (low - vec.begin()) << '\n';
 		std::cout << "index of first element, greater than to 20 is: " << (high - vec.begin()) << '\n';
 		int inputtobesearched;
 		std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
@@ -41,31 +41,64 @@ int main()
 		int sizeofuservector;
 		cin >> sizeofuservector;
 		if (sizeofuservector < 2) { cout << "Sorry the number for the vector size is too small."; }
-		else if (sizeofuservector<=100 && sizeofuservector>=2) {
-			cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
-			int amountofnumberinput = 0;
-			vector <int> uservector;
-			int numberinput;
-			while (amountofnumberinput < sizeofuservector) {
-				cin >> numberinput;
-				uservector.push_back(numberinput);
-				amountofnumberinput++;
+		else if (sizeofuservector <= 100 && sizeofuservector >= 2) {
+			cout << "Do you want to use  default or custom or skip index point?" << endl;
+			int indexpointuser;
+			cout << "1 for default, 2 for custom, 3 for skip index point? [1/2/3] "; cin >> indexpointuser;
+			if (indexpointuser == 1) {
+				cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
+				int amountofnumberinput = 0;
+				vector <int> uservector;
+				int numberinput;
+				while (amountofnumberinput < sizeofuservector) {
+					cin >> numberinput;
+					uservector.push_back(numberinput);
+					amountofnumberinput++;
+				}
+				std::sort(uservector.begin(), uservector.end());
+				iter low = std::lower_bound(uservector.begin(), uservector.end(), 20);
+				iter high = std::upper_bound(uservector.begin(), uservector.end(), 20);
+				std::cout << "index of first element, less than or equal to 20 is: " << (low - uservector.begin()) << '\n';
+				std::cout << "index of first element, greater than to 20 is: " << (high - uservector.begin()) << '\n';
+				int inputtobesearched;
+				std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
+				if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
+					std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index";
+				}
+				else {
+					std::cout << "Not found the number that you are looking in the index ";
+				}
+				return 0;
 			}
-			std::sort(uservector.begin(), uservector.end());
-			int inputtobesearched;
-			std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
-			if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
-				std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index";
+			else if (indexpointuser == 2) {
+				cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
+				int amountofnumberinput = 0;
+				vector <int> uservector;
+				int numberinput;
+				while (amountofnumberinput < sizeofuservector) {
+					cin >> numberinput;
+					uservector.push_back(numberinput);
+					amountofnumberinput++;
+				}
+				std::sort(uservector.begin(), uservector.end());
+				cout << "type the number for index middle point" << endl;
+				int indexmiddlepoint;
+				cin >> indexmiddlepoint;
+				iter low = std::lower_bound(uservector.begin(), uservector.end(), indexmiddlepoint);
+				iter high = std::upper_bound(uservector.begin(), uservector.end(), indexmiddlepoint);
+				std::cout << "index of first element, less than or equal to " << indexmiddlepoint << " is " << (low - uservector.begin()) << '\n';
+				std::cout << "index of first element, greater than to " << indexmiddlepoint << " is "<< (high - uservector.begin()) << '\n';
+				int inputtobesearched;
+				std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
+				if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
+					std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index"; return 0;
+				}
+				else {
+					std::cout << "Not found the number that you are looking in the index "; return 0;
+				}
+				return 0;
 			}
 			else {
-				std::cout << "Not found the number that you are looking in the index ";
-			}
-			return 0;
-		}
-		else {cout << "Are you sure want to add large amount of data it will take large amount of time to input the number by yourself?"<<endl;
-		int yesorno;
-		cout << "1 to continue, 2 to abort [1/2] "; cin >> yesorno;
-			if (yesorno == 1) {
 				cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
 				int amountofnumberinput = 0;
 				vector <int> uservector;
@@ -79,15 +112,100 @@ int main()
 				int inputtobesearched;
 				std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
 				if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
-					std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index";
+					std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index"; return 0;
 				}
 				else {
-					std::cout << "Not found the number that you are looking in the index ";
+					std::cout << "Not found the number that you are looking in the index "; return 0;
 				}
 				return 0;
 			}
-			else if (yesorno == 2) { cout << "This operation is aborted"; return 0;}
-			else { cout << "Invalid number. This operation will be aborted"; return 0;}
+
+		}
+		else {
+			cout << "Are you sure want to add large amount of data it will take large amount of time to input the number by yourself?" << endl;
+			int yesorno;
+			cout << "1 to continue, 2 to abort [1/2] "; cin >> yesorno;
+			if (yesorno == 1) {
+				cout << "Do you want to use  default or custom or skip index point?" << endl;
+				int indexpointuser;
+				cout << "1 for default, 2 for custom, 3 for skip index point? [1/2/3] "; cin >> indexpointuser;
+				if (indexpointuser == 1) {
+					cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
+					int amountofnumberinput = 0;
+					vector <int> uservector;
+					int numberinput;
+					while (amountofnumberinput < sizeofuservector) {
+						cin >> numberinput;
+						uservector.push_back(numberinput);
+						amountofnumberinput++;
+					}
+					std::sort(uservector.begin(), uservector.end());
+					iter low = std::lower_bound(uservector.begin(), uservector.end(), 20);
+					iter high = std::upper_bound(uservector.begin(), uservector.end(), 20);
+					std::cout << "index of first element, less than or equal to 20 is: " << (low - uservector.begin()) << '\n';
+					std::cout << "index of first element, greater than to 20 is: " << (high - uservector.begin()) << '\n';
+					int inputtobesearched;
+					std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
+					if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
+						std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index"; return 0;
+					}
+					else {
+						std::cout << "Not found the number that you are looking in the index "; return 0;
+					}
+					return 0;
+				}
+				else if (indexpointuser == 2) {
+					cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
+					int amountofnumberinput = 0;
+					vector <int> uservector;
+					int numberinput;
+					while (amountofnumberinput < sizeofuservector) {
+						cin >> numberinput;
+						uservector.push_back(numberinput);
+						amountofnumberinput++;
+					}
+					std::sort(uservector.begin(), uservector.end());
+					cout << "type the number for index middle point" << endl;
+					int indexmiddlepoint;
+					cin >> indexmiddlepoint;
+					iter low = std::lower_bound(uservector.begin(), uservector.end(), indexmiddlepoint);
+					iter high = std::upper_bound(uservector.begin(), uservector.end(), indexmiddlepoint);
+					std::cout << "index of first element, less than or equal to  " << indexmiddlepoint << " is " << (low - uservector.begin()) << '\n';
+					std::cout << "index of first element, greater than to " << indexmiddlepoint << " is " << (high - uservector.begin()) << '\n';
+					int inputtobesearched;
+					std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
+					if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
+						std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index"; return 0;
+					}
+					else {
+						std::cout << "Not found the number that you are looking in the index "; return 0;
+					}
+					return 0;
+				}
+				else {
+					cout << "type the number for the index. Only number no character, symbol, unicode character, etc" << endl;
+					int amountofnumberinput = 0;
+					vector <int> uservector;
+					int numberinput;
+					while (amountofnumberinput < sizeofuservector) {
+						cin >> numberinput;
+						uservector.push_back(numberinput);
+						amountofnumberinput++;
+					}
+					std::sort(uservector.begin(), uservector.end());
+					int inputtobesearched;
+					std::cout << "enter the number you want to find in the index  "; std::cin >> inputtobesearched;
+					if (std::binary_search(uservector.begin(), uservector.end(), inputtobesearched)) {
+						std::cout << "Found number "; std::cout << inputtobesearched; std::cout << " in the index"; return 0;
+					}
+					else {
+						std::cout << "Not found the number that you are looking in the index "; return 0;
+					}
+					return 0;
+				}
+			}
+			else if (yesorno == 2) { cout << "This operation is aborted"; return 0; }
+			else { cout << "Invalid number. This operation will be aborted"; return 0; }
 		}
 	}
 	else { cout << "sorry you are not entering right number"; return 0; }
